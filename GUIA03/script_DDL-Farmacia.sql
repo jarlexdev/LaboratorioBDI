@@ -45,8 +45,7 @@ CREATE TABLE marcas(
 CREATE TABLE presentacionMedicamento(    
     idPresentacionMedicamento INT PRIMARY KEY AUTO_INCREMENT,
     nombrePresentacion VARCHAR(45) NOT NULL,
-    descripcion VARCHAR(100),
-    idMedicamento INT NOT NULL
+    descripcion VARCHAR(100)
 );
 
 CREATE TABLE inventario(
@@ -75,8 +74,7 @@ CREATE TABLE facturaCompra(
     idFacturaCompra INT PRIMARY KEY AUTO_INCREMENT,
     fechaHoraFacturacion DATETIME NOT NULL,
     ivaFacturaCompra DECIMAL(5,2),
-    creditoFiscalCompra DECIMAL(5,2),
-    idDetalleCompra INT NOT NULL
+    creditoFiscalCompra DECIMAL(5,2)
 );
 
 CREATE TABLE detalleCompra(
@@ -85,9 +83,8 @@ CREATE TABLE detalleCompra(
     precioUnitario DECIMAL(5,2) NOT NULL,
     subTotalCompra DECIMAL(5,2) NOT NULL,
     idCompra INT NOT NULL,
-    idmedicamento INT NOT NULL,
+    idMedicamento INT NOT NULL,
     idFacturaCompra INT NOT NULL
-    
 );
 
 CREATE TABLE compras(
@@ -143,7 +140,7 @@ CREATE TABLE clientes(
     nombresCliente VARCHAR(100) NOT NULL,
     apellidosCliente VARCHAR(100) NOT NULL,
     telefonoCliente VARCHAR(15) NOT NULL,
-    generoClientes VARCHAR(1) NOT NULL,
+    generoCliente VARCHAR(1) NOT NULL,
     duiCliente VARCHAR(10),
     fechaNacCliente DATE,
     correoCliente VARCHAR(100),
