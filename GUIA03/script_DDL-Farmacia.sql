@@ -45,7 +45,7 @@ CREATE TABLE marcas(
 CREATE TABLE presentacionMedicamento(    
     idPresentacionMedicamento INT PRIMARY KEY AUTO_INCREMENT,
     nombrePresentacion VARCHAR(45) NOT NULL,
-    descipcion VARCHAR(100),
+    descripcion VARCHAR(100),
     idMedicamento INT NOT NULL
 );
 
