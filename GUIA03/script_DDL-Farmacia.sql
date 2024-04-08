@@ -103,7 +103,7 @@ CREATE TABLE laboratorios(
 );
 
 -- TABLAS DE VENTAS -- 
-CREATE TABLE metodoPagos(
+CREATE TABLE metodosPago(
     idMetodoPago INT PRIMARY KEY AUTO_INCREMENT,
     nombreMetodo VARCHAR(25) NOT NULL,
     descripcionMetodoPago VARCHAR(45)
@@ -193,7 +193,7 @@ ALTER TABLE detalleCompra ADD FOREIGN KEY (idFacturaCompra) REFERENCES facturaCo
 ALTER TABLE compras ADD FOREIGN KEY (idLaboratorio) REFERENCES laboratorios(idLaboratorio);
 ALTER TABLE laboratorios ADD FOREIGN KEY (idDireccion) REFERENCES direcciones(idDireccion);
 -- LLAVES FORANEAS DE VENTAS --
-ALTER TABLE facturaVenta ADD FOREIGN KEY (idMetodoPago) REFERENCES metodoPagos(idMetodoPago);
+ALTER TABLE facturaVenta ADD FOREIGN KEY (idMetodoPago) REFERENCES metodosPago(idMetodoPago);
 ALTER TABLE detalleVenta ADD FOREIGN KEY (idVenta) REFERENCES ventas(idVenta);
 ALTER TABLE detalleVenta ADD FOREIGN KEY (idMedicamento) REFERENCES medicamentos(idMedicamento);
 ALTER TABLE detalleVenta ADD FOREIGN KEY (idFacturaVenta) REFERENCES facturaVenta(idFacturaVenta);
