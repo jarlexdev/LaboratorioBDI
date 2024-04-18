@@ -363,7 +363,10 @@ INSERT INTO cargos (cargo) VALUES
     ('Cajero'),
     ('Vendedor'),
     ('Seguridad'),
-    ('Ordenanza');
+    ('Ordenanza'),
+	('Bodeguero'),
+	('RRHH'),
+	('Contador');
     
 INSERT INTO sucursales (nombreSucursal, telefonoSucursal, correoSucursal, horarioApertura, horarioCierre, idDireccion) VALUES 
     ('Sucursal Este', '5555-5555', 'info@sucursaleste.com', '083000', '173000', 6),
