@@ -1,1 +1,1 @@
-<h1>Guías de Laboratorio de Base de Datos I</h1>
+<h1>Guías del Laboratorio de Base de Datos I</h1>
