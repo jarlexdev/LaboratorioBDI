@@ -178,6 +178,30 @@ CREATE TABLE empleados(
     idSucursal INT NOT NULL
 );
 
+CREATE TABLE roles(
+	idRol INT PRIMARY KEY AUTO_INCREMENT ,
+	rol VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE opciones(
+	idOpcion INT PRIMARY KEY AUTO_INCREMENT,
+    opcion VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE asignacionRolesOpciones(
+	idAsignacion INT PRIMARY KEY AUTO_INCREMENT,
+    idRol INT NOT NULL,
+    idOpcion INT NOT NULL
+);
+
+CREATE TABLE usuarios(
+	idUsuario INT PRIMARY KEY AUTO_INCREMENT ,
+    usuario VARCHAR(50) NOT NULL,
+    contrasenia VARCHAR(50) NOT NULL,
+    idRol INT NOT NULL,
+    idEmpleado INT NOT NULL
+);
+
 -- LLAVES FORANEAS DE DIRECCIONES --
 ALTER TABLE municipios ADD FOREIGN KEY (idDepartamento) REFERENCES departamentos(idDepartamento);
 ALTER TABLE distritos ADD FOREIGN KEY (idMunicipio) REFERENCES municipios(idMunicipio);
@@ -204,3 +228,9 @@ ALTER TABLE empleados ADD FOREIGN KEY (idCargo) REFERENCES cargos(idCargo);
 ALTER TABLE empleados ADD FOREIGN KEY (idDireccion) REFERENCES direcciones(idDireccion);
 ALTER TABLE empleados ADD FOREIGN KEY (idSucursal) REFERENCES sucursales(idSucursal);
 ALTER TABLE sucursales ADD FOREIGN KEY (idDireccion) REFERENCES direcciones(idDireccion);
+-- LLAVES FORANEAS DE ROL --
+ALTER TABLE asignacionRolesOpciones ADD FOREIGN KEY (idRol) REFERENCES roles(idRol);
+ALTER TABLE asignacionRolesOpciones ADD FOREIGN KEY (idOpcion) REFERENCES opciones(idOpcion);
+-- LLAVES FORANEAS DE USUARIO --
+ALTER TABLE usuarios ADD FOREIGN KEY (idRol) REFERENCES roles(idRol);
+ALTER TABLE usuarios ADD FOREIGN KEY (idEmpleado) REFERENCES empleados(idEmpleado);
