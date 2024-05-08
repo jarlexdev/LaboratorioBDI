@@ -1,7 +1,7 @@
 -- INSERCIONES
 
 -- Tablas de direccion
-insert into departamentos values
+INSERT INTO departamentos VALUES
 -- idDepartamento, departamento, pais 
 	('AH', 'Ahuachapán', 'El Salvador'),
 	('CA', 'Cabañas', 'El Salvador'),
@@ -18,7 +18,7 @@ insert into departamentos values
 	('SO', 'Sonsonate', 'El Salvador'),
 	('US', 'Usulután', 'El Salvador');
 
-insert into municipios values
+INSERT INTO municipios VALUES
 -- idMunicipio, municipio, idDepartamento
 	('AHN', 'Ahuachapán Norte', 'AH'),
 	('AHC', 'Ahuachapán Centro', 'AH'),
@@ -65,7 +65,7 @@ insert into municipios values
 	('USE', 'Usulután Este', 'US'),
 	('USO', 'Usulután Oeste', 'US');
 
-insert into distritos values
+INSERT INTO distritos VALUES
 -- idDistrito, distrito, idMunicipio
 -- Ahuachapan
 	('AHN01', 'Atiquizaya', 'AHN'),
@@ -344,7 +344,7 @@ insert into distritos values
 	('USO03', 'San Agustín', 'USO'),
 	('USO04', 'San Francisco Javier', 'USO');
 
-insert into direcciones (linea1, linea2, idDistrito, codigoPostal) values
+INSERT INTO direcciones (linea1, linea2, idDistrito, codigoPostal) values
 	('Col Madera, Calle 1, #1N', 'Frente al parque', 'SON02', '02311'),  -- 1					
 	('Barrio El Caldero, Av 2, #2I', 'Frente al amate', 'SOE01', '02306'), -- 2
 	('Res El Cangrejo, Av 3, #3A', 'Frente a la playa', 'SOO01', '02302'), -- 3
@@ -357,17 +357,55 @@ insert into direcciones (linea1, linea2, idDistrito, codigoPostal) values
 	('Caserio Florencia, 3era Calle, #5', 'Casa rosada', 'SON01', '02305');-- 10
 
 INSERT INTO cargos (cargo) VALUES 
-    ('SysAdmin'),
-    ('Regente'),
-    ('Gerente'),
-    ('Cajero'),
-    ('Vendedor'),
-    ('Seguridad'),
-    ('Ordenanza'),
-	('Bodeguero'),
-	('RRHH'),
-	('Contador');
+    ('SysAdmin'),   -- 1 --
+    ('Regente'),    -- 2 --
+    ('Gerente'),    -- 3 --
+    ('Cajero'),     -- 4 --
+    ('Vendedor'),   -- 5 --
+	('Bodeguero'),  -- 6 --
+	('RRHH'),       -- 7 --
+	('Contador'),   -- 8 --
+    ('Seguridad'),  -- 9 --
+    ('Ordenanza');  -- 10 --
     
+INSERT INTO roles (rol) VALUES 
+    ('SysAdmin'),   -- 1 --
+    ('Regente'),    -- 2 ---
+    ('Gerente'),    -- 3 --
+    ('Cajero'),     -- 4 --
+    ('Vendedor'),   -- 5 --
+	('Bodeguero'),  -- 6 --
+	('RRHH'),       -- 7 --
+	('Contador');   -- 8 --
+    
+INSERT INTO opciones (opcion) values
+	('Gestionar Cuentas'), -- 1 --
+    ('Gestionar departamentos'), -- 2 --
+    ('Gestionar municipios'), -- 3 --
+    ('Gestionar distritos'), -- 4 --
+    ('Gestionar direcciones'), -- 5 --
+    ('Gestionar categorias'), -- 6 --
+    ('Gestionar marcas'), -- 7 --
+    ('Gestionar presentacionMedicamento'), -- 8 --
+    ('Gestionar inventario'), -- 9 --
+    ('Gestionar medicamentos'), -- 10 --
+    ('Gestionar facturaCompra'), -- 11 --
+    ('Gestionar detalleCompra'), -- 12 --
+    ('Gestionar compras'), -- 13 --
+    ('Gestionar laboratorios'), -- 14 --
+    ('Gestionar metodosPago'), -- 15 --
+    ('Gestionar facturaVenta'), -- 16 --
+    ('Gestionar detalleVenta'), -- 17 --
+    ('Gestionar ventas'), -- 18 --
+    ('Gestionar clientes'), -- 19 --
+    ('Gestionar cargos'), -- 20 --
+    ('Gestionar empleados'), -- 21 --
+    ('Gestionar roles'), -- 22 --
+    ('Gestionar opciones'), -- 23 --
+    ('Gestionar asignacionRolesOpciones'), -- 24 --
+    ('Gestionar usuarios'), -- 25 --
+    ('Gestionar sucursales'); -- 26 --
+
 INSERT INTO sucursales (nombreSucursal, telefonoSucursal, correoSucursal, horarioApertura, horarioCierre, idDireccion) VALUES 
     ('Sucursal Este', '5555-5555', 'info@sucursaleste.com', '083000', '173000', 6),
     ('Sucursal Oeste', '6666-6666', 'info@sucursaloeste.com', '090000', '180000', 7),
@@ -376,11 +414,14 @@ INSERT INTO sucursales (nombreSucursal, telefonoSucursal, correoSucursal, horari
     ('Sucursal Sur', '9999-9999', 'info@sucursalsur.com', '090000', '180000', 10);
 
 INSERT INTO empleados (nombresEmpleado, apellidosEmpleado, duiEmpleado, isssEmpleado, fechaNacEmpleado, telefonoEmpleado, generoEmpleado, correoEmpleado, idCargo, idDireccion, idSucursal) VALUES 
-    ('Laura', 'García', '0987654321', '567890123', '1993-08-22', '7777-7777', 'F', 'laura@example.com', 4, 2, 1),
-    ('Roberto', 'Hernández', '9876543210', '345678901', '1990-12-10', '8888-8888', 'M', 'roberto@example.com', 5, 3, 1),
-    ('Elena', 'Sánchez', '8765432109', '234567890', '1995-04-18', '9999-9999', 'F', 'elena@example.com', 6, 4, 2),
-    ('Diego', 'Martínez', '7654321098', '123456789', '1988-11-30', '1111-1111', 'M', 'diego@example.com', 7, 5, 2),
-    ('Sofía', 'López', '6543210987', '012345678', '1992-06-25', '2222-2222', 'F', 'sofia@example.com', 3, 6, 3);
+    ('Laura', 'García', '04523695-5', '906325698', '1993-08-22', '7777-7777', 'F', 'laura@example.com', 1, 2, 1),
+    ('Roberto', 'Hernández', '4321098-7', '345678901', '1990-12-10', '8888-8888', 'M', 'roberto@example.com', 2, 3, 1),
+    ('Elena', 'Sánchez', '03210987-4', '234567890', '1995-04-18', '9999-9999', 'F', 'elena@example.com', 3, 4, 1),
+    ('Diego', 'Martínez', '06789012-1', '123456789', '1988-11-30', '1111-1111', 'M', 'diego@example.com', 4, 5, 1),
+    ('Sofía', 'López', '07654321-3', '012345678', '1992-06-25', '2222-2222', 'F', 'sofia@example.com', 5, 6, 1),
+    ('Marvin', 'Reyes', '06789012-7', '012345645', '1990-05-20', '6435-4444', 'M', 'marvin@example.com', 6, 10, 1),
+    ('Julio', 'Rivera', '02345678-4', '512347645', '1991-03-11', '7453-3132', 'M', 'julio@example.com', 7, 9, 1),
+    ('Rodrigo', 'Zabala', '08901234-2', '384217474', '1989-11-25', '5853-1324', 'M', 'rodrigo@example.com', 8, 2, 1);
 
 -- TABLAS DE COMPRA --
 INSERT INTO categorias (nombreCategoria, descripcionCategoria) VALUES
@@ -451,10 +492,10 @@ INSERT INTO metodosPago (nombreMetodo, descripcionMetodoPago) VALUES
 	('Tarjeta de débito', 'Pago con tarjeta de débito');
 
 INSERT INTO clientes (nombresCliente, apellidosCliente, telefonoCliente, generoCliente, duiCliente, fechaNacCliente, correoCliente, idDireccion) VALUES 
-    ('Juan', 'Pérez', '7777-8888', 'M', '12345678', '1985-05-10', 'juanperez@example.com', 1),
-    ('María', 'López', '9999-0000', 'F', '87654321', '1990-10-15', 'marialopez@example.com', 2),
-    ('Pedro', 'Gómez', '3333-4444', 'M', '13579246', '1988-03-20', 'pedrogomez@example.com', 3),
-    ('Fernando', 'Ceren', '0000-0000', 'M', '21222129', '2002-10-29', 'ferceren10@example.com', 4);
+    ('Juan', 'Pérez', '7777-8888', 'M', '12345678-5', '1985-05-10', 'juanperez@example.com', 1),
+    ('María', 'López', '9999-0000', 'F', '87654321-2', '1990-10-15', 'marialopez@example.com', 2),
+    ('Pedro', 'Gómez', '3333-4444', 'M', '13579246-0', '1988-03-20', 'pedrogomez@example.com', 3),
+    ('Fernando', 'Ceren', '0000-0000', 'M', '21222129-7', '2002-10-29', 'ferceren10@example.com', 4);
 
 INSERT INTO ventas (fechaHoraVenta, totalVenta, idCliente, idEmpleado) VALUES 
     ('2024-04-06 10:30:00', 400.00, 1, 1),
@@ -470,3 +511,139 @@ INSERT INTO detalleVenta (cantidadVendida, precioUnitario, subTotalVenta, idVent
     (50, 8.00, 400.00, 1, 1, 1),
     (50, 14.00, 700.00, 2, 2, 2),
     (20, 2.5, 50.00, 3, 3, 3);
+    
+INSERT INTO asignacionRolesOpciones (idRol, idOpcion) VALUES
+-- SysAdmin: Todos los permisos
+   ('1','1'),  -- cuentas
+   ('1','2'),  -- departamentos
+   ('1','3'),  -- municipios
+   ('1','4'),  -- distritos
+   ('1','5'),  -- direcciones
+   ('1','6'),  -- categorias
+   ('1','7'),  -- marcas
+   ('1','8'),  -- presentacion de medicamento
+   ('1','9'),  -- inventario
+   ('1','10'), -- medicamentos
+   ('1','11'), -- factura de compra
+   ('1','12'), -- detalle de compra
+   ('1','13'), -- compras
+   ('1','14'), -- laboratorios
+   ('1','15'), -- metodos de pago
+   ('1','16'), -- factura de venta
+   ('1','17'), -- detalle de venta
+   ('1','18'), -- ventas
+   ('1','19'), -- clientes
+   ('1','20'), -- cargos
+   ('1','21'), -- empleados
+   ('1','22'), -- roles
+   ('1','23'), -- opciones
+   ('1','24'), -- asignacion de roles opciones
+   ('1','25'), -- usuarios
+   ('1','26'), -- sucursales
+
+-- Regente: CRUD(medicamentos,formulas,sucursales)
+   ('2','10'),
+   ('2','26'),
+
+-- Gerente: Todos los permisos
+   ('3','1'),  -- cuentas
+   ('3','2'),  -- departamentos
+   ('3','3'),  -- municipios
+   ('3','4'),  -- distritos
+   ('3','5'),  -- direcciones
+   ('3','6'),  -- categorias
+   ('3','7'),  -- marcas
+   ('3','8'),  -- presentacion de medicamento
+   ('3','9'),  -- inventario
+   ('3','10'), -- medicamentos
+   ('3','11'), -- factura de compra
+   ('3','12'), -- detalle de compra
+   ('3','13'), -- compras
+   ('3','14'), -- laboratorios
+   ('3','15'), -- metodos de pago
+   ('3','16'), -- factura de venta
+   ('3','17'), -- detalle de venta
+   ('3','18'), -- ventas
+   ('3','19'), -- clientes
+   ('3','20'), -- cargos
+   ('3','21'), -- empleados
+   ('3','22'), -- roles
+   ('3','23'), -- opciones
+   ('3','24'), -- asignacion de roles opciones
+   ('3','25'), -- usuarios
+   ('3','26'), -- sucursales
+
+-- Cajero: CRUD(clientes,ventas,detalle de venta,factura de venta,direcciones,metodos de pago) LECTURA(distritos,municipios,departamentos)
+   -- solo lectura
+   ('4','2'),  -- departamentos
+   ('4','3'),  -- municipios
+   ('4','4'),  -- distritos
+   -- 
+   ('4','5'),  -- direcciones
+   ('4','15'), -- metodos de pago
+   ('4','16'), -- factura de venta
+   ('4','17'), -- detalle de venta
+   ('4','18'), -- ventas
+   ('4','19'), -- clientes
+
+-- Vendedor: CRUD(clientes,medicamentos,direcciones,ventas,detalle de venta,factura de venta) LECTURA(distritos,municipios,departamentos)
+   -- solo lectura 
+   ('5','2'),  -- departamentos
+   ('5','3'),  -- municipios
+   ('5','4'),  -- distritos
+   --
+   ('5','19'), -- clientes
+   ('5','10'), -- medicamentos
+   ('5','5'),  -- direcciones
+   ('5','18'), -- ventas
+   ('5','17'), -- detalle de venta
+   ('5','16'), -- factura de venta
+
+-- Bodegero: CRUD(inventario,medicamentos,categorias,presentacion de medicamento,marcas,compras,detalle de compra,factura de compra,laboratorios,direcciones,sucursales) LECTURA(distritos,municipios,departamentos)
+   -- solo lectura
+   ('6','2'),  -- departamentos
+   ('6','3'),  -- municipios
+   ('6','4'),  -- distritos
+   -- 
+   ('6','9'),  -- inventario
+   ('6','10'), -- medicamentos
+   ('6','6'),  -- categorias
+   ('6','8'),  -- presentacion de medicamento
+   ('6','7'),  -- marcas
+   ('6','13'), -- compras
+   ('6','12'), -- detalle de compra
+   ('6','11'), -- factura de compra
+   ('6','14'), -- laboratorios
+   ('6','5'),  -- direcciones
+   ('6','26'), -- sucursales
+
+-- RRHH: CRUD(empleados,cargos,direcciones) LECTURA(distritos,municipios,departamentos)
+   -- solo lectura 
+   ('7','2'),  -- distritos
+   ('7','3'),  -- municipios
+   ('7','4'),  -- departamentos
+   --
+   ('7','21'), -- empleados
+   ('7','20'), -- cargos
+   ('7','5'),  -- direcciones
+
+-- Contador: CRUD(ventas,detalle de venta,factura de venta,compras,detalle de compra,factura de compra,metodos de pago)
+   ('8','18'), -- ventas
+   ('8','17'), -- detalle de venta
+   ('8','16'), -- factura de venta
+   ('8','13'), -- compras
+   ('8','12'), -- detalle de compra
+   ('8','11'), -- factura de compra
+   ('8','15'); -- metodos de pago
+   
+INSERT INTO usuarios (usuario, contrasenia, idRol, idEmpleado) VALUES
+   ('admin_lauragarcia', 'root', '1', '1'), -- Administrador --
+   ('regen_robertohernandez', 'Hernandez123', '2', '2'), -- Regente --
+   ('geren_elenasanchez', 'Elena234', '3', '3'), -- Gerente --
+   ('caje_diegomartinez', 'Martinez345', '4', '4'), -- Cajera --
+   ('vende_sofialopez', 'Lopez456', '5', '5'), -- Vendedora --
+   ('bodeg_marvinreyes', 'Reyes567', '6', '6'), -- Bodeguero --
+   ('rrhh_juliorivera', 'Rivera678', '7', '7'), -- RRHH --
+   ('conta_rodrigozabala', 'Zabala789', '8', '8'); -- Contador --
+   
+   
