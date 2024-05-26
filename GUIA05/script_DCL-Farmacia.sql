@@ -1,7 +1,5 @@
 -- DCL BASE DE DATOS DE FARMACIA --
 
-USE farmacia;
-
 -- CREACION DE ROLES --
    CREATE ROLE IF NOT EXISTS 'SysAdmin';
    CREATE ROLE IF NOT EXISTS 'Regente';
@@ -148,3 +146,5 @@ SHOW GRANTS FOR 'vende_sofialopez'@'localhost';
 SHOW GRANTS FOR 'bodeg_marvinreyes'@'localhost';
 SHOW GRANTS FOR 'rrhh_juliorivera'@'localhost';
 SHOW GRANTS FOR 'conta_rodrigozabala'@'localhost';
+
+SHOW TABLES;
