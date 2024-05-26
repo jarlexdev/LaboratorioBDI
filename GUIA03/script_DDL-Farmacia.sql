@@ -1,4 +1,6 @@
-CREATE DATABASE Farmacia;
+-- DDL BASE DE DATOS DE FARMACIA --
+
+CREATE DATABASE farmacia;
 
 USE Farmacia;
 
@@ -45,7 +47,7 @@ CREATE TABLE marcas(
 CREATE TABLE presentacionMedicamento(    
     idPresentacionMedicamento INT PRIMARY KEY AUTO_INCREMENT,
     nombrePresentacion VARCHAR(45) NOT NULL,
-    descripcion VARCHAR(100)
+    descripcion VARCHAR(300)
 );
 
 CREATE TABLE inventario(
@@ -59,8 +61,8 @@ CREATE TABLE medicamentos(
     idMedicamento INT PRIMARY KEY AUTO_INCREMENT,
     nombreMedicamento VARCHAR(100) NOT NULL,
     formulaMedicamento VARCHAR(45) NOT NULL,
-    descripcionMedicamento VARCHAR(100),
-    dosisMedicamento VARCHAR(50) NOT NULL,
+    descripcionMedicamento VARCHAR(300),
+    dosisMedicamento VARCHAR(50),
     fechaVencimiento DATE NOT NULL,
     precioCompra DECIMAL(5,2) NOT NULL,
     precioVenta DECIMAL(5,2) NOT NULL,
@@ -73,8 +75,8 @@ CREATE TABLE medicamentos(
 CREATE TABLE facturaCompra(
     idFacturaCompra INT PRIMARY KEY AUTO_INCREMENT,
     fechaHoraFacturacion DATETIME NOT NULL,
-    ivaFacturaCompra DECIMAL(5,2),
-    creditoFiscalCompra DECIMAL(5,2)
+    ivaFacturaCompra DECIMAL(5,2) NOT NULL,
+    creditoFiscalCompra DECIMAL(5,2) NOT NULL
 );
 
 CREATE TABLE detalleCompra(
@@ -97,7 +99,7 @@ CREATE TABLE compras(
 CREATE TABLE laboratorios(
     idLaboratorio INT PRIMARY KEY AUTO_INCREMENT,
     nombreLaboratorio VARCHAR(50) NOT NULL,
-    numeroContacto CHAR(9) NOT NULL,
+    numeroContacto VARCHAR(15) NOT NULL,
     correoElectronicoLaboratorio VARCHAR(100),
     idDireccion INT NOT NULL
 );
@@ -112,8 +114,8 @@ CREATE TABLE metodosPago(
 CREATE TABLE facturaVenta(
     idFacturaVenta INT PRIMARY KEY AUTO_INCREMENT,
     fechaHoraFacturacion DATETIME NOT NULL,
-    ivaFacturaVenta DECIMAL(5,2),
-    creditoFiscalVenta DECIMAL(5,2),
+    ivaFacturaVenta DECIMAL(5,2) NOT NULL,
+    creditoFiscalVenta DECIMAL(5,2) NOT NULL,
     idMetodoPago INT NOT NULL
 );
 
@@ -152,11 +154,12 @@ CREATE TABLE sucursales(
     nombreSucursal VARCHAR(45) NOT NULL,
     telefonoSucursal VARCHAR(15) NOT NULL,
     correoSucursal VARCHAR(100) NOT NULL,
-    horarioApertura TIME NOT NULL,
-    horarioCierre TIME NOT NULL,
+    horarioApertura TIME,
+    horarioCierre TIME,
     idDireccion INT NOT NULL
 );
 
+-- TABLAS DE EMPLEADOS --
 CREATE TABLE cargos(
     idCargo INT PRIMARY KEY  AUTO_INCREMENT,
     cargo VARCHAR(25) NOT NULL,
@@ -178,6 +181,7 @@ CREATE TABLE empleados(
     idSucursal INT NOT NULL
 );
 
+-- TABLES DE ROLES --
 CREATE TABLE roles(
 	idRol INT PRIMARY KEY AUTO_INCREMENT ,
 	rol VARCHAR(50) NOT NULL
@@ -201,7 +205,7 @@ CREATE TABLE usuarios(
     idRol INT NOT NULL,
     idEmpleado INT NOT NULL
 );
-
+SHOW TABLES;
 -- LLAVES FORANEAS DE DIRECCIONES --
 ALTER TABLE municipios ADD FOREIGN KEY (idDepartamento) REFERENCES departamentos(idDepartamento);
 ALTER TABLE distritos ADD FOREIGN KEY (idMunicipio) REFERENCES municipios(idMunicipio);
@@ -224,13 +228,14 @@ ALTER TABLE detalleVenta ADD FOREIGN KEY (idFacturaVenta) REFERENCES facturaVent
 ALTER TABLE ventas ADD FOREIGN KEY (idCliente) REFERENCES clientes(idCliente);
 ALTER TABLE ventas ADD FOREIGN KEY (idEmpleado) REFERENCES empleados(idEmpleado);
 ALTER TABLE clientes ADD FOREIGN KEY (idDireccion) REFERENCES direcciones(idDireccion);
+ALTER TABLE sucursales ADD FOREIGN KEY (idDireccion) REFERENCES direcciones(idDireccion);
+-- LLAVES FORANEAS DE EMPLEADOS --
 ALTER TABLE empleados ADD FOREIGN KEY (idCargo) REFERENCES cargos(idCargo);
 ALTER TABLE empleados ADD FOREIGN KEY (idDireccion) REFERENCES direcciones(idDireccion);
 ALTER TABLE empleados ADD FOREIGN KEY (idSucursal) REFERENCES sucursales(idSucursal);
-ALTER TABLE sucursales ADD FOREIGN KEY (idDireccion) REFERENCES direcciones(idDireccion);
 -- LLAVES FORANEAS DE ROL --
 ALTER TABLE asignacionRolesOpciones ADD FOREIGN KEY (idRol) REFERENCES roles(idRol);
 ALTER TABLE asignacionRolesOpciones ADD FOREIGN KEY (idOpcion) REFERENCES opciones(idOpcion);
--- LLAVES FORANEAS DE USUARIO --
+-- LLAVES FORANEAS DE USUARIOS --
 ALTER TABLE usuarios ADD FOREIGN KEY (idRol) REFERENCES roles(idRol);
 ALTER TABLE usuarios ADD FOREIGN KEY (idEmpleado) REFERENCES empleados(idEmpleado);
