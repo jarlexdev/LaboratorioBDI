@@ -1,1 +1,4 @@
-*.sql linguist-language=SQL
+GUIA03/*.sql linguist-language=SQL
+GUIA04/*.sql linguist-language=SQL
+GUIA05/*.sql linguist-language=SQL
+GUIA06/*.sql linguist-language=SQL
